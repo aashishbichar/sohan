@@ -8,24 +8,17 @@ export const CATEGORIES: Category[] = [
   { id: 'the-ordinary-theatre', name: 'The Ordinary Theatre', imageUrl: '/images/thumbnails/ordinary%20theatre%20thumbnail.webp', aspect: 'video' },
 ];
 
-const generatePhotos = (category: string, count: number): Photo[] => {
-  return Array.from({ length: count }, (_, i) => {
-    const height = Math.floor(Math.random() * 600) + 400;
-    const width = 800;
-    return {
-      id: i + 1,
-      src: `https://picsum.photos/seed/${category}${i}/${width}/${height}`,
-      alt: `${category} photo ${i + 1}`,
-      width,
-      height,
-    };
-  });
-};
+async function fetchPhotos(category: string): Promise<Photo[]> {
+  const response = await fetch(`/data/${category}.json`);
+  const data = await response.json();
+  return data;
+}
 
-export const PHOTOS: Record<string, Photo[]> = {
-  'natural-aesthetics': generatePhotos('natural-aesthetics', 15),
-  'concretes': generatePhotos('concretes', 18),
-  'night-and-light': generatePhotos('night-and-light', 16),
-  'portraits-in-motion': generatePhotos('portraits-in-motion', 20),
-  'the-ordinary-theatre': generatePhotos('the-ordinary-theatre', 14),
+
+export const PHOTOS: Record<string, () => Promise<Photo[]>> = {
+  'natural-aesthetics': () => fetchPhotos('natural-aesthetics'),
+  'concretes': () => fetchPhotos('concretes'),
+  'night-and-light': () => fetchPhotos('night-and-light'),
+  'portraits-in-motion': () => fetchPhotos('portraits-in-motion'),
+  'the-ordinary-theatre': () => fetchPhotos('the-ordinary-theatre'),
 };

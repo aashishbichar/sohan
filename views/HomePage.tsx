@@ -3,6 +3,7 @@ import React from 'react';
 import { CATEGORIES } from '../constants';
 import Logo from '../components/Logo';
 import CategoryCard from '../components/CategoryCard';
+import Footer from '../components/Footer';
 import type { Category } from '../types';
 
 interface HomePageProps {
@@ -28,56 +29,57 @@ const HomePage: React.FC<HomePageProps> = ({ onSelectCategory }) => {
         </div>
       </section>
 
-      {/* Category grid section - New "1 big, 4 small" layout */}
+      {/* Category grid section - 3 equal cards top row, 2 equal larger cards bottom row */}
       <section className="w-full max-w-7xl mx-auto p-4 sm:p-8 pb-12 sm:pb-16">
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_1.25fr_1fr] lg:grid-cols-[1fr_1.5fr_1fr] md:grid-rows-2 gap-6 sm:gap-8">
-          
-          {/* Central Card (Big) */}
-          {cats.naturalAesthetics && (
-            <CategoryCard
-              category={cats.naturalAesthetics}
-              onClick={() => onSelectCategory(cats.naturalAesthetics!.id)}
-              className="md:col-start-2 md:row-start-1 md:row-span-2 !aspect-auto h-full"
-            />
-          )}
-          
-          {/* Top-Left Card */}
-          {cats.concretes && (
-            <CategoryCard
-              category={cats.concretes}
-              onClick={() => onSelectCategory(cats.concretes!.id)}
-              className="md:col-start-1 md:row-start-1"
-            />
-          )}
+        <div className="space-y-6 sm:space-y-8">
+          {/* Row 1 - 3 equal square cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {cats.concretes && (
+              <CategoryCard
+                category={cats.concretes}
+                onClick={() => onSelectCategory(cats.concretes!.id)}
+                className="!aspect-square"
+              />
+            )}
 
-          {/* Top-Right Card */}
-          {cats.nightAndLight && (
-            <CategoryCard
-              category={cats.nightAndLight}
-              onClick={() => onSelectCategory(cats.nightAndLight!.id)}
-              className="md:col-start-3 md:row-start-1"
-            />
-          )}
+            {cats.naturalAesthetics && (
+              <CategoryCard
+                category={cats.naturalAesthetics}
+                onClick={() => onSelectCategory(cats.naturalAesthetics!.id)}
+                className="!aspect-square"
+              />
+            )}
+            
+            {cats.nightAndLight && (
+              <CategoryCard
+                category={cats.nightAndLight}
+                onClick={() => onSelectCategory(cats.nightAndLight!.id)}
+                className="!aspect-square"
+              />
+            )}
+          </div>
 
-          {/* Bottom-Left Card */}
-          {cats.portraitsInMotion && (
-            <CategoryCard
-              category={cats.portraitsInMotion}
-              onClick={() => onSelectCategory(cats.portraitsInMotion!.id)}
-              className="md:col-start-1 md:row-start-2"
-            />
-          )}
+          {/* Row 2 - 2 equal larger square cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
+            {cats.portraitsInMotion && (
+              <CategoryCard
+                category={cats.portraitsInMotion}
+                onClick={() => onSelectCategory(cats.portraitsInMotion!.id)}
+                className="!aspect-square"
+              />
+            )}
 
-          {/* Bottom-Right Card */}
-          {cats.theOrdinaryTheatre && (
-            <CategoryCard
-              category={cats.theOrdinaryTheatre}
-              onClick={() => onSelectCategory(cats.theOrdinaryTheatre!.id)}
-              className="md:col-start-3 md:row-start-2"
-            />
-          )}
+            {cats.theOrdinaryTheatre && (
+              <CategoryCard
+                category={cats.theOrdinaryTheatre}
+                onClick={() => onSelectCategory(cats.theOrdinaryTheatre!.id)}
+                className="!aspect-square"
+              />
+            )}
+          </div>
         </div>
       </section>
+      <Footer />
     </main>
   );
 };

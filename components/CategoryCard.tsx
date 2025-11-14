@@ -27,7 +27,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ category, onClick, classNam
         backgroundPosition: 'center',
       }}
     >
-      <div className="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-30 transition-all duration-300 ease-in-out flex items-center justify-center">
+      <div className="absolute inset-0 bg-black bg-opacity-70 group-hover:bg-opacity-50 transition-all duration-300 ease-in-out flex items-center justify-center">
         <h2 className="text-2xl font-serif text-white tracking-wider transform group-hover:scale-105 transition-transform duration-300 ease-in-out">
           {category.name}
         </h2>

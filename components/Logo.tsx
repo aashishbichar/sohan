@@ -1,44 +1,14 @@
 import React from 'react';
 
 const Logo: React.FC = () => (
-  <div className="flex flex-col items-center">
-    {/* Main Logo - Made Bigger */}
-    <div className="relative inline-block w-[24rem] h-52 sm:w-[28rem] sm:h-60">
-      <svg
-        viewBox="0 0 400 200"
-        className="absolute inset-0 w-full h-full"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M50 150 C 150 -50, 250 250, 350 50"
-          stroke="#A39A8B"
-          strokeWidth="1.5"
-          fill="none"
-          strokeLinecap="round"
-          opacity="0.7"
-        />
-        <path
-          d="M200,20 Q250,180 380,170"
-          stroke="#A39A8B"
-          strokeWidth="1"
-          fill="none"
-          strokeLinecap="round"
-          opacity="0.6"
-        />
-        <path
-          d="M20,20 Q180,200 250,100"
-          stroke="#A39A8B"
-          strokeWidth="1"
-          fill="none"
-          strokeLinecap="round"
-          opacity="0.5"
-        />
-      </svg>
-      <div className="absolute inset-0 flex items-center justify-center">
-        <h1 className="text-8xl sm:text-9xl font-serif tracking-widest text-neutral-100">
-          SOHAN
-        </h1>
-      </div>
+  <div className="flex flex-col items-center justify-center">
+    {/* Main Logo - Image */}
+    <div className="flex justify-center ml-32">
+      <img
+        src="/images/Sohan.png"
+        alt="Sohan"
+        className="w-[24rem] h-auto sm:w-[28rem] object-contain"
+      />
     </div>
 
     {/* Added Text Block */}
